@@ -15,6 +15,7 @@ class LinkedList {
   struct Node {
     int data;
     Node* next;
+    Node* prev;
   };
 
   Node* head;
@@ -23,6 +24,7 @@ class LinkedList {
 
 public:
 	LinkedList();
+  LinkedList(LinkedList& other);
   ~LinkedList();
 
   LinkedList::Node* getHead() const;
@@ -30,7 +32,9 @@ public:
   int getSize() const;
   int at(int index) const;
   void add(int toAdd);
-	void print() const;
+  bool remove(int index);
+	void printForward() const;
+  void printBackward() const;
 
 };
 
