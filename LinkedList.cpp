@@ -40,7 +40,7 @@ LinkedList::LinkedList(LinkedList& other) {
  */
 LinkedList::~LinkedList() {
   Node* curr = head;
-  while(head->next != NULL) {
+  while(head != NULL) {
     head = head->next;
     delete curr;
     curr = head;
