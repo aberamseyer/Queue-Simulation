@@ -7,7 +7,6 @@
  * 2-14-2017
  */
 
-#include <iostream>
 #include "LinkedList.h"
 
 /*
@@ -16,6 +15,7 @@
  */
 LinkedList::LinkedList() {
   this->head = NULL;
+  this->tail = NULL;
   size = 0;
 }
 
@@ -25,6 +25,7 @@ LinkedList::LinkedList() {
  */
 LinkedList::LinkedList(LinkedList& other) {
   head = NULL;
+  tail = NULL;
   size = 0;
   // int size = other.getSize();
   Node* curr = other.getHead();
@@ -129,12 +130,23 @@ void LinkedList::add(int toAdd) {
  */
 bool LinkedList::remove(int index) {
   Node* curr = head;
-  if(index == 0) {
-    curr->next->prev = NULL;  // disconnect next node's prev
-    head = curr->next;        // move head up one
-    curr->next = NULL;        // disconnect head from next node
-    delete curr;
-    curr = NULL;      // remove dangling pointer
+  if(index < 0 || index >= size) {
+    return false; // index out of range
+  }
+  else if(index == 0) {
+    if(size != 1) {
+      curr->next->prev = NULL;  // disconnect next node's prev
+      head = curr->next;        // move head up one
+      curr->next = NULL;        // disconnect head from next node
+      delete curr;
+      curr = NULL;      // remove dangling pointer
+    }
+    else {
+      head = NULL;
+      tail = NULL;
+      delete curr;
+      curr = NULL;
+    }
   }
   else if(index == size-1) {
     curr = tail;     // change curr to tail
@@ -143,9 +155,6 @@ bool LinkedList::remove(int index) {
     curr->prev = NULL;        // isolate last Node
     delete curr;
     curr = NULL; // remove dangling pointer
-  }
-  else if(index < 0 || index >= size) {
-    return false; // index out of range
   }
   else {
     for(int i=0; i < index; i++) {
@@ -159,28 +168,4 @@ bool LinkedList::remove(int index) {
 
   size--;
   return true;
-}
-
-/*
- * Prints out all the values in the list forward
- * O(n)
- */
-void LinkedList::printForward() const {
-  Node* curr = head;
-  for(int i=0; i < size; i++) {
-    std::cout << i << ": " << curr->data << std::endl;
-    curr = curr->next;
-  }
-}
-
-/*
- * Prints out all the values in the list backward
- * O(n)
- */
-void LinkedList::printBackward() const {
-  Node* curr = tail;
-  for(int i=size; i > 0; i--) {
-    std::cout << i-1 << ": " << curr->data << std::endl;
-    curr = curr->prev;
-  }
 }

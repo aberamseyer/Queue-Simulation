@@ -33,7 +33,7 @@ public:
   int at(int index) const;
   void add(int toAdd);
   bool remove(int index);
-	void printForward() const;
+  void printForward() const;
   void printBackward() const;
 
 };
