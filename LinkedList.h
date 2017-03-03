@@ -4,10 +4,8 @@
 * @Abe Ramseyer
 * 2-14-2017
 */
-#include "stdafx.h"
 #ifndef LINKEDLIST_H_
 #define LINKEDLIST_H_
-#include <iostream>
 
 class LinkedList 
 {

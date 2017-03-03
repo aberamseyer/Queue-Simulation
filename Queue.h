@@ -1,26 +1,27 @@
-#include "stdafx.h"
+/* Program: The Queue Simulation
+*  Filename: Simulation.cpp
+*  Due: 2.7.16
+*  Author: Harry Manny
+*  Description: This is the Queue ADT implementation's header. It's just got the standard functions.
+*/
 #ifndef QUEUE_H_
 #define QUEUE_H_
 #include "LinkedList.h"
-#include <iostream>
-#include <string>
-#include <time.h>
-#include <stdlib.h>
 
-class Queue
+class Queue	
 {
 	private:
 		int gap;
 		LinkedList list;
-		void run(LinkedList& list, int gap);
-		void enqueue(LinkedList& list, int data);
-		void dequeue(LinkedList& list);
 	public:
 		Queue(const int& gap) : gap(gap)
 		{
 			LinkedList list;
-			run(list, gap);
 		};
+		void enqueue(int data);
+		void dequeue();
+		int getSize();
+		int front();
 		~Queue();
 };
 #endif

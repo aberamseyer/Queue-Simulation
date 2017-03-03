@@ -6,8 +6,6 @@
 * @Abe Ramseyer
 * 2-14-2017
 */
-#include "stdafx.h"
-#include <iostream>
 #include "LinkedList.h"
 
 LinkedList::LinkedList() // Default constructor; constant time
@@ -32,7 +30,7 @@ LinkedList::LinkedList(LinkedList& other) // Copy constructor; O(n)
 LinkedList::~LinkedList() // Destructor; O(n)
 {
 	Node* curr = head;
-	while (head->next != NULL) 
+	while (head != NULL) 
 	{
 		head = head->next;
 		delete curr;
