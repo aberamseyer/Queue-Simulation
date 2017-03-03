@@ -98,7 +98,7 @@ void run(Queue& queue, int gap)	// This function actually runs the simulation.
 			}
 			queue.enqueue(minuteOfDay);				// Here we actually add the customer to the list.
 			arrivalCountdown = (rand() % gap) + 1;	// We have to reset the value of arrivalCountdown so the next customer can arrive.
-			totalCustomers++;						
+			totalCustomers++;
 			queueSize++;
 			arrivalCounter++;
 			if (queueSize > maxSize)	// The case wherein the current queue size is larger than the previous max
@@ -113,7 +113,7 @@ void run(Queue& queue, int gap)	// This function actually runs the simulation.
 
 		if (departureCountdown == 0)	// The case wherein it's time for the customer at the head of the queue to leave
 		{
-			
+
 			if (queueSize > 0)	// We only dequeue a customer if there is one.
 			{
 				departureCountdown = (rand() % gap) + 1;	// Here we reinitialize the departure timer.
@@ -123,7 +123,7 @@ void run(Queue& queue, int gap)	// This function actually runs the simulation.
 				int currentWait = minuteOfDay - queue.front();
 				if (maxWait < currentWait)	// The case wherein the current wait time is larger than the previous max.
 				{
-					maxWait = currentWait;	
+					maxWait = currentWait;
 				}
 				queue.dequeue();
 			}
@@ -132,7 +132,7 @@ void run(Queue& queue, int gap)	// This function actually runs the simulation.
 		{
 			departureCountdown--;
 		}
-		
+
 	}
 	std::cout << "\n  The maximum wait time was " << maxWait << " minutes." << std::endl;
 	std::cout << "\n  The maximum number of people in the queue was " << maxSize << ".\n" <<  std::endl;
@@ -143,6 +143,3 @@ int main()
 	displayMenu();
 	return 0;
 }
-
-
-

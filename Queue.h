@@ -8,7 +8,7 @@
 #define QUEUE_H_
 #include "LinkedList.h"
 
-class Queue	
+class Queue
 {
 	private:
 		int gap;

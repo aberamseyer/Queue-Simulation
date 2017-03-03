@@ -4,16 +4,18 @@
 #
 
 CC = g++
+FLAGS = -std=c++11
 
 all:main
 
-main: Queue.o Simulation.o
-	${CC} Queue.o Simulation.o -o main
-Stack.o:
-	${CC} -c Queue.cpp
+main: LinkedList.o Queue.o Simulation.o
+	${CC} ${FLAGS} LinkedList.o Queue.o Simulation.o -o QueueSimulation
+Queue.o:
+	${CC} ${FLAGS} -c Queue.cpp
+LinkedList.o:
+	${CC} ${FLAGS} -c LinkedList.cpp
 Simulation.o:
-	${CC} -c Simulation.cpp
+	${CC} ${FLAGS} -c Simulation.cpp
 clean:
 	rm *.o
-run:
-	clean main
+run: clean main

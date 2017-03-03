@@ -5,8 +5,7 @@
 
 #include "Queue.h"
 
-Queue::~Queue()
-{}
+Queue::~Queue() {}
 
 void Queue::enqueue(int data)
 {
